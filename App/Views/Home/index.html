@@ -4,10 +4,46 @@
 
 {% block body %}
 
-    <h1>Welcome to Save - Budget manager app!</h1>
-{% if current_user %}
+<div class="indexWrapper">
 
-<h2>Hello -  {{current_user.name}}!</h2>
-{% endif %}
+    {% if current_user %}
+
+
+<div class="welcome">
+    <img src="/img/logo.png" class="indexLogo" alt="SBM">
+    <h1>Welcome to Save - Budget manager app!</h1>
+    <h4>Hello {{current_user.name}}!</h4>
+</div>
+    <div class="actionFields">
+        <div class="actionbox">A</div>
+        <div class="actionbox">B</div>
+        <div class="actionbox">C</div>
+        <div class="actionbox">D</div>
+    </div>
+
+    {% else %}
+
+    <div class="welcome">
+        <img src="/img/logo.png" class="indexLogo" alt="SBM">
+        <h1>Welcome to Save - Budget manager app!</h1>
+    <p>No account yet? Click <a href="/signup/new">here to sign up!</a></p>
+</div>
+    <div class="indexFields">
+        <h3>
+            A perfect place to start managing your personal finances!
+        </h3>
+        <p> Goodbudget is more about planning for your finances than tracking previous transactions. This app is based on the envelope budgeting system, in which you portion out your monthly income toward specific spending categories (called envelopes). </p>
+        <p>This app doesn’t connect your bank accounts. You manually add account balances (that you can pull from your bank’s website), as well as cash amounts, debts and income. Then you assign money toward envelopes.</p>
+        <p>You can access the app from your phone and the web. You’ll also find many helpful articles and videos that help you use the app.</p>
+        <p>Goodbudget offers a free version that allows one account, two devices and limited envelopes. Its paid version, Goodbudget Plus, allows unlimited envelopes and accounts, up to five devices and other perks.</p>
+    </div>
+    {% endif %}
+
+</div>
+
+
+
+
+
 
 {% endblock %}

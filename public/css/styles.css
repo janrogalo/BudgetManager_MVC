@@ -7,10 +7,77 @@ h1 {
 
 .background{
     background: rgb(247,244,239);
-    background: linear-gradient(180deg, rgba(247,244,239,1) 31%, rgba(136,189,188,1) 72%, rgba(17,45,50,1) 100%);
     width:100%;
     background-repeat: no-repeat;
     padding: 3rem;
+    z-index: -1;
+}
+
+
+.indexWrapper{
+    display: flex;
+    justify-content: center;
+}
+
+.welcome {
+    position: relative;
+    padding: 4rem;
+    border-radius: 4px;
+    margin: 2rem;
+    height: 50vh;
+    width: 50vh;
+    justify-content: center;/
+}
+
+.indexFields{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 4rem;
+    border-radius: 4px;
+    margin: 2rem;
+    height: 50vh;
+    width: 50vh;
+    justify-content: center;
+    background-color: #88bdbc;
+
+}
+
+
+.actionFields{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    border-radius: 4px;
+    margin: 2rem;
+    height: 50vh;
+    width: 50vh;
+    justify-content: center;
+
+
+}
+
+.indexLogo{
+    width: 240px;
+    height: 118px;
+    margin-bottom: 3rem;
+}
+
+
+.indexFields p{
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+}
+
+.actionbox{
+    width: 300px;
+    height: 300px;
+    margin: 1rem;
+    background-color: white;
+
+
+
 }
 
 
@@ -35,10 +102,7 @@ body, html {
 }
 
 
-p {
-    font-family: 'Lato', sans-serif;
-    font-size: 1em;
-}
+
 
 hr {
     width: 100%;
