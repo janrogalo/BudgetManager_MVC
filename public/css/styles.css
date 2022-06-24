@@ -1,60 +1,57 @@
-
+/*General styles*/
+/*------------------------*/
 h1 {
     font-family: 'Lato', sans-serif;
     font-size: 1rem;
     color: #112d32;
+    padding-bottom: 20px;
 }
+
 
 .background{
     background: rgb(247,244,239);
     width:100%;
-    background-repeat: no-repeat;
     padding: 3rem;
-    z-index: -1;
 }
 
+
+
+/*Index Page styles*/
+/*------------------------*/
 
 .indexWrapper{
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .welcome {
     position: relative;
     padding: 4rem;
     border-radius: 4px;
-    margin: 2rem;
-    height: 50vh;
-    width: 50vh;
-    justify-content: center;/
+    width: 600px;
+    justify-content: center;
+
 }
 
 .indexFields{
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
     padding: 4rem;
     border-radius: 4px;
     margin: 2rem;
-    height: 50vh;
-    width: 50vh;
+    width: 50%;
     justify-content: center;
     background-color: #88bdbc;
-
 }
-
 
 .actionFields{
     display: flex;
-    flex-direction: column;
     flex-wrap: wrap;
     border-radius: 4px;
-    margin: 2rem;
-    height: 50vh;
-    width: 50vh;
+    margin: 1rem;
+    width: 600px;
     justify-content: center;
-
-
 }
 
 .indexLogo{
@@ -63,7 +60,6 @@ h1 {
     margin-bottom: 3rem;
 }
 
-
 .indexFields p{
     font-family: 'Lato', sans-serif;
     font-size: 1rem;
@@ -71,14 +67,189 @@ h1 {
 }
 
 .actionbox{
-    width: 300px;
-    height: 300px;
+
+    width: 250px;
+    height: 250px;
     margin: 1rem;
-    background-color: white;
-
-
+    background-color: black;
 
 }
+
+
+/*Forms styles (Login Register etc) */
+/*------------------------*/
+
+
+.container{
+    height:100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.defaultForm{
+    display: flex;
+    flex-direction: column;
+    background-color: #88bdbc;
+    padding: 3rem 3rem 1rem 3rem;
+    width: 500px;
+    border-radius: 4px;
+}
+
+
+label {
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem;
+    color: #112d32;
+    margin-top: 1rem;
+    margin-bottom: 0.4rem;
+
+}
+
+
+label, input .block {
+    display:block;
+    width:100%;
+}
+
+div a {
+     color: black;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+div a:hover{
+    color: #112d32;
+  text-decoration: underline;
+}
+
+.link{
+    text-align: right;
+}
+
+.textInput {
+    background-color: #f7f4ef;
+    width: 96%;
+    border: 1px solid #112d32;
+    border-radius: 0.2em;
+    font-family: 'Lato', sans-serif;
+    font-size: 1em;
+}
+
+.textInput:focus {
+    outline: none;
+    box-shadow: 0 0.5em 0.5em -0.4em #112d32;
+}
+
+button {
+    background-color: #88bdbc;
+    border: 1px solid black;
+    border-radius: 10%;
+    padding: 0.4rem 0.48em;
+    font-size: 1em;
+    transition: all 0.20s;
+    font-family: 'Lato', sans-serif;
+}
+
+button:hover {
+    box-shadow: 0 0.5em 0.5em -0.4em #f7f4ef;
+    transform: translateY(-0.2em);
+    transition: ease-in;
+    cursor: pointer;
+}
+
+
+
+/*Utility classes*/
+/*------------------------*/
+
+.marginTop{
+    margin-top: 3rem;
+}
+
+
+
+
+/*Media Querries*/
+/*------------------------*/
+
+@media (max-width: 1500px) {
+
+    .welcome {
+        width: 350px;
+        margin-right: 2rem;
+    }
+
+}
+
+
+@media (max-width: 1120px) {
+
+    .indexWrapper{
+        display: flex;
+    flex-direction: column;
+    }
+
+    .welcome{
+        width: 100%;
+    }
+
+    .actionFields{
+        width: 80%;
+    }
+
+    .indexFields{
+        width: 100%;
+        margin-top: 0;
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+
+
+    .welcome{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 2rem;
+    }
+
+    .indexLogo{
+        display:none;
+    }
+
+    .defaultForm{
+        width: 300px;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /*OLD*/
@@ -96,11 +267,12 @@ body, html {
     height: 95%;
     width:95 vw;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
+.
 
 
 
@@ -169,115 +341,11 @@ a:hover {
     color: #112d32;
 }
 
-label {
-    font-family: 'Lato', sans-serif;
-    font-size: 0.7rem;
-    color: #112d32;
-    margin-top: 1rem;
-}
-
-button {
-    background-color: #88bdbc;
-    color: #112d32;
-    border: 1px solid;
-    border-radius: 0.2em;
-    padding: 0.2em 0.2em;
-    margin: 0.5em 0em 0.2em 0em;
-    font-size: 1em;
-    transition: all 0.20s;
-    font-family: 'Lato', sans-serif;
-}
-
-button:hover {
-    box-shadow: 0 0.5em 0.5em -0.4em #f7f4ef;
-    transform: translateY(-0.2em);
-    transition: ease-in;
-    cursor: pointer;
-}
-
-.submit-input {
-    background-color: #88bdbc;
-    color: #112d32;
-    border: 1px solid;
-    border-radius: 0.2em;
-    padding: 0.2em 0.2em;
-    margin: 0.5em 0em 0.2em 0em;
-    font-size: 1rem;
-    transition: all 0.20s;
-    font-family: 'Lato', sans-serif;
-}
-
-.submit-input:hover {
-    box-shadow: 0 0.5em 0.5em -0.4em #f7f4ef;
-    transform: translateY(-0.2em);
-    transition: ease-in;
-    cursor: pointer;
-}
 
 
 
 
-.button-input {
-    background-color: #88bdbc;
-    color: #112d32;
-    text-decoration: none;
-    border-radius: 0.2em;
-    padding: 0.2em 0.2em;
-    margin: 0.5em 0em 0.2em 0em;
-    font-size: 1em;
-    transition: all 0.20s;
-    font-family: 'Lato', sans-serif;
-}
 
-.button-input:hover {
-    box-shadow: 0 0.5em 0.5em -0.4em #f7f4ef;
-    transform: translateY(-0.2em);
-    transition: ease-in;
-    cursor: pointer;
-}
-
-
-.text-input {
-    background-color: #f7f4ef;
-    width: 96%;
-    border: 1px solid #112d32;
-    border-radius: 0.2em;
-    font-family: 'Lato', sans-serif;
-    font-size: 1em;
-}
-
-.text-input:focus {
-    outline: none;
-    box-shadow: 0 0.5em 0.5em -0.4em #112d32;
-}
-
-.password-input {
-    background-color: #f7f4ef;
-    width: 96%;
-    border: 1px solid #112d32;
-    border-radius: 0.2em;
-    font-family: 'Lato', sans-serif;
-    font-size: 1em;
-}
-
-.password-input:focus {
-    outline: none;
-    box-shadow: 0 0.5em 0.5em -0.4em #112d32;
-}
-
-.email-input {
-    background-color: #f7f4ef;
-    width: 96%;
-    border: 1px solid #112d32;
-    border-radius: 0.2em;
-    font-family: 'Lato', sans-serif;
-    font-size: 1em;
-}
-
-.email-input:focus {
-    outline: none;
-    box-shadow: 0 0.5em 0.5em -0.4em #112d32;
-}
 
 .date-input {
     background-color: #f7f4ef;
@@ -313,11 +381,6 @@ button:hover {
     top: 3rem;
 }
 
-.container {
-    padding-top: 20px;
-    width: 90%;
-    justify-items: center;
-}
 
 .nav-item {
 
