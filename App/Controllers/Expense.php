@@ -21,16 +21,14 @@ class Expense extends Authenticated {
     public function addAction() {
         $expenses = new Expenses($_POST);
 
-        if($expenses) {
-
+        if($expenses->addExpense(Auth::getUser())) {
             //dodanie wydatku do bazy
             $this->added_expense = true;
             $this->newAction();
         }
 
         else {
-
-            $this->new();
+            $this->newAction();
         }
     }
 

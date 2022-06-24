@@ -13,7 +13,7 @@ class Expenses extends \Core\Model {
         $comment = filter_input(INPUT_POST, 'comment');
         $method = filter_input(INPUT_POST, 'method');
 
-        $sql = 'INSERT INTO expenses VALUES (NULL, :prep_user_id, :prep_category, :prep_method, :prep_amount, :prep_date, :prep_comment)';
+        $sql = 'INSERT INTO expenses VALUES (NULL, :user_id, :category, :method, :amount, :date, :comment)';
         $db = static::getDB();
         $stmt = $db->prepare($sql);
 

@@ -269,8 +269,44 @@ public static function authenticate($email, $password){
       return false;
     }
 
+    public static function copyDefaultExpenses($user) {
+
+        $sql = 'INSERT INTO expenses_category_assigned_to_users(user_id, name) SELECT :user_id, name FROM expenses_category_default ';
+        $db = static::getDB();
+        $stmt = $db->prepare($sql);
+
+        $stmt->bindValue(':user_id', $user->id, PDO::PARAM_INT);
+        $stmt->execute();
+
+    }
+
+    public static function copyDefaultPaymentMethod($user) {
+
+        $sql = 'INSERT INTO payment_methods_assigned_to_users(user_id, name) SELECT :user_id, name FROM  payment_methods_default ';
+        $db = static::getDB();
+        $stmt = $db->prepare($sql);
+
+        $stmt->bindValue(':user_id', $user->id, PDO::PARAM_INT);
+        $stmt->execute();
+
+    }
 
 
+    public static function getUserByToken($value) {
+        $token = new Token($value);
+        $hashed_token = $token->getHash();
 
+        $sql = 'SELECT * FROM users 
+				WHERE activation_hash = :hashed_token';
+
+        $db = static::getDB();
+        $stmt = $db->prepare($sql);
+
+        $stmt->bindValue(':hashed_token', $hashed_token, PDO::PARAM_STR);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class());
+        $stmt->execute();
+
+        return $stmt->fetch();
+    }
 
 }
