@@ -71,9 +71,39 @@ h1 {
     width: 250px;
     height: 250px;
     margin: 1rem;
-    background-color: black;
+    background-color: #88bdbc;
+    border-radius: 4px;
 
 }
+
+
+
+.actionbox:hover {
+    box-shadow: 0 0.5em 0.5em -0.4em #112d32
+}
+
+
+.main-item {
+    display: flex;
+    justify-self: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    color: #112d32;
+    background-color: #88bdbc;
+    padding: 2.8em;
+    text-align: center;
+}
+
+
+
+
+
+
+
 
 
 /*Forms styles (Login Register etc) */
@@ -107,7 +137,6 @@ label {
     margin-bottom: 0.4rem;
 
 }
-
 
 label, input .block {
     display:block;
@@ -159,6 +188,12 @@ button:hover {
     transition: ease-in;
     cursor: pointer;
 }
+
+
+
+
+
+
 
 
 
@@ -285,9 +320,6 @@ hr {
 
 
 
-a:hover {
-    color: #f7f4ef;
-}
 
 .login-menu {
     max-width: 400px;
@@ -415,25 +447,8 @@ a:hover {
     padding: 1em;
 }
 
-.main-item {
-    height: 200px;
-    display: flex;
-    justify-self: center;
-    flex-wrap: wrap;
-    flex-direction: column;
-    text-decoration: none;
-    font-family: 'Lato', sans-serif;
-    font-size: 1.2em;
-    text-transform: uppercase;
-    color: #112d32;
-    background-color: #88bdbc;
-    border-radius: 0.2em;
-    padding: 2.8em
-}
 
-.main-item:hover {
-    box-shadow: 0 0.5em 0.5em -0.4em #112d32
-}
+
 
 .main-description {
     font-family: 'Lato', sans-serif;

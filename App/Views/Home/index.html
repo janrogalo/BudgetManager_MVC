@@ -14,10 +14,24 @@
         <h4>Hello {{current_user.name}}!</h4>
     </div>
     <div class="actionFields">
-        <div class="actionbox">A</div>
-        <div class="actionbox">B</div>
-        <div class="actionbox">C</div>
-        <div class="actionbox">D</div>
+        <div class="actionbox">
+            <a class="main-item align-content-center justify-content-center" href="/expense">
+                <img class="img-description" src="img/expense.png" alt="icon">
+                Expense</a>
+        </div>
+        <div class="actionbox">
+            <a class="main-item align-content-center justify-content-center" href="/income">
+            <img class="img-description" src="img/income.png" alt="icon">
+            Income</a></div>
+        <div class="actionbox">
+            <a class="main-item align-content-center justify-content-center" href="/balance">
+                <img class="img-description" src="img/balance.png" alt="icon">
+                Balance</a>
+        </div>
+        <div class="actionbox">
+            <a class="main-item align-content-center justify-content-center" href="/settings">
+            <img class="img-description" src="img/settings.png" alt="icon">
+            Settings</a></div>
     </div>
 
     {% else %}
