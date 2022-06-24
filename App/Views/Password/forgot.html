@@ -4,14 +4,32 @@
 
 {% block body %}
 
-<h1>Request password reset</h1>
+<div class="container">
+    <h1>Request password reset</h1>
+    <div class="defaultForm">
 <form method="post" action="/password/request-reset">
     <div>
+        <div class="block">
   <label for="inputEmail">Email address</label>
-    <input type="email" id="inputEmail" name="email" placeholder="Email address" autofocus required/>
+    <input type="email" class="textInput" id="inputEmail" name="email" placeholder="Email address" autofocus required/>
     </div>
-    <button type="submit"> Send password reset</button>
+    <div class="link marginTop">
+    <button class="submit" type="submit"> Send password reset</button>
+    </div>
 </form>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
