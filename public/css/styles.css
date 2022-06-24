@@ -205,6 +205,11 @@ button:hover {
 }
 
 
+.displayNone{
+    display: none;
+}
+
+
 
 
 /*Media Querries*/
@@ -263,6 +268,42 @@ button:hover {
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
