@@ -27,4 +27,32 @@ class Expenses extends \Core\Model {
         return $stmt->execute();
     }
 
+
+
+    public static function getUserExpenses($user) {
+
+        $sql = 'SELECT expenses_category_assigned_to_users.name,
+                SUM(expenses.amount) AS "sum" 
+                FROM expenses, expenses_category_assigned_to_users 
+                WHERE expenses.user_id = :user_id 
+                AND expenses_category_assigned_to_users.user_id = expenses.user_id 
+                AND expenses_category_assigned_to_users.id = expenses.expense_category_assigned_to_user_id 
+                GROUP BY expenses_category_assigned_to_users.name 
+                ORDER BY sum DESC';
+        $db = static::getDB();
+        $stmt = $db->prepare($sql);
+
+        $stmt->bindValue(':user_id', $user->id, PDO::PARAM_INT);
+
+
+        $stmt->execute();
+
+return $stmt->fetchAll();
+    }
+
+
+
+
+
+
 }
