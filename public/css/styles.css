@@ -190,8 +190,9 @@ button:hover {
 }
 
 
-
-
+select-items;{
+    color: black;
+}
 
 
 
@@ -202,6 +203,11 @@ button:hover {
 
 .marginTop{
     margin-top: 3rem;
+}
+
+
+.displayNone{
+    display: none;
 }
 
 
@@ -263,6 +269,42 @@ button:hover {
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

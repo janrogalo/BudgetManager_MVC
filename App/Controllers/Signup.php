@@ -19,6 +19,7 @@ class Signup extends \Core\Controller
         $user = new User($_POST);
         if ($user -> save()){
             $user->sendActivationEmail();
+
            $this -> redirect('/signup/success');
 
         } else {
@@ -32,7 +33,10 @@ class Signup extends \Core\Controller
 
 
     public function activateAction(){
+        $user = User::getUserByToken($this->route_params['token']);
        User::activate($this->route_params['token']);
+        User::copyDefaultExpenses($user);
+        User::copyDefaultPaymentMethod($user);
        $this->redirect('/signup/activated');
     }
 
