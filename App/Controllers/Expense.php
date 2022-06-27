@@ -4,6 +4,8 @@ namespace App\Controllers;
 use \Core\View;
 use \App\Auth;
 use \App\Models\Expenses;
+use \App\Models\User;
+
 
 class Expense extends Authenticated {
 
@@ -15,14 +17,19 @@ class Expense extends Authenticated {
     }
 
     public function newAction() {
-        View::renderTemplate('Expense/new.html');
+        $paymentMethod = User::getPaymentMethods(Auth::getUser());
+        $expensesCategory = User::getExpenseCategory(Auth::getUser());
+
+        View::renderTemplate('Expense/new.html', [
+            'paymentMethods' => $paymentMethod,
+            'expenseCategories' => $expensesCategory
+        ]);
     }
 
     public function addAction() {
         $expenses = new Expenses($_POST);
 
         if($expenses->addExpense(Auth::getUser())) {
-            //dodanie wydatku do bazy
             $this->added_expense = true;
             $this->newAction();
         }

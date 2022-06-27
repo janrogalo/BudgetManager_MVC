@@ -309,4 +309,34 @@ public static function authenticate($email, $password){
         return $stmt->fetch();
     }
 
+
+    public static function getPaymentMethods($user) {
+
+        $sql = 'SELECT * FROM payment_methods_assigned_to_users WHERE user_id = :user_id';
+        $db = static::getDB();
+        $stmt = $db->prepare($sql);
+
+        $stmt->bindValue(':user_id', $user->id, PDO::PARAM_INT);
+
+        $stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class());
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
+    public static function getExpenseCategory($user) {
+
+        $sql = 'SELECT * FROM expenses_category_assigned_to_users WHERE user_id = :user_id';
+        $db = static::getDB();
+        $stmt = $db->prepare($sql);
+
+        $stmt->bindValue(':user_id', $user->id, PDO::PARAM_INT);
+
+        $stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class());
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
+
+
+
 }
