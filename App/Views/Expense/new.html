@@ -34,7 +34,7 @@
           <div class="block">
             <label for="paymentMethod">Payment method</label>
 
-            <select name="paymentMethod" class="textInput" id="paymentMethod">
+            <select name="method" class="textInput" id="method">
               {% for method in paymentMethods %}
               <option value={{method.id}}>{{method.name}}</option>
               {% endfor %}
@@ -45,7 +45,7 @@
             <label for="category">Expense category</label>
             <select name="category" class="textInput" id="category">
               {% for category in expenseCategories %}
-              <option value= {{category.id}}>{{category.name}}</option>
+              <option value={{category.id}}>{{category.name}}</option>
               {% endfor %}
             </select>
           </div>
@@ -63,10 +63,7 @@
         </form>
 
 
-
-
-<!--         Modal -->
-
+<!--Modal -->
 
 
         <div id="myModal" tabindex="-1" role="dialog" class="displayNone" >

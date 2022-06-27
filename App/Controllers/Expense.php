@@ -13,7 +13,7 @@ class Expense extends Authenticated {
 
     protected function before() {
         parent::before();
-        $this->added_expense = false;
+        $this->addedExpense = false;
     }
 
     public function newAction() {
@@ -22,7 +22,8 @@ class Expense extends Authenticated {
 
         View::renderTemplate('Expense/new.html', [
             'paymentMethods' => $paymentMethod,
-            'expenseCategories' => $expensesCategory
+            'expenseCategories' => $expensesCategory,
+            'addedExpense' => $this->addedExpense
         ]);
     }
 
@@ -30,11 +31,9 @@ class Expense extends Authenticated {
         $expenses = new Expenses($_POST);
 
         if($expenses->addExpense(Auth::getUser())) {
-            $this->added_expense = true;
+            $this->addedExpense = true;
             $this->newAction();
-        }
-
-        else {
+        } else {
             $this->newAction();
         }
     }
