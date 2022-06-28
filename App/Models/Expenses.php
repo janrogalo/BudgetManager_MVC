@@ -31,14 +31,14 @@ class Expenses extends \Core\Model {
 
     public static function getUserExpenses($user) {
 
-        $sql = 'SELECT expenses_category_assigned_to_users.name,
-                SUM(expenses.amount) AS "sum" 
-                FROM expenses, expenses_category_assigned_to_users 
-                WHERE expenses.user_id = :user_id 
-                AND expenses_category_assigned_to_users.user_id = expenses.user_id 
-                AND expenses_category_assigned_to_users.id = expenses.expense_category_assigned_to_user_id 
-                GROUP BY expenses_category_assigned_to_users.name 
-                ORDER BY sum DESC';
+        $sql = 'SELECT e.id, e.amount, e.date_of_expense, e.expense_comment, c.name AS category, m.name AS method
+FROM expenses AS e
+INNER JOIN expenses_category_assigned_to_users AS c ON e.expense_category_assigned_to_user_id = c.id
+INNER JOIN payment_methods_assigned_to_users AS m ON e.payment_method_assigned_to_user_id = m.id
+     WHERE e.user_id = :user_id 
+                AND c.user_id = e.user_id 
+                AND c.id = e.expense_category_assigned_to_user_id 
+                AND m.id = e.payment_method_assigned_to_user_id' ;
         $db = static::getDB();
         $stmt = $db->prepare($sql);
 

@@ -9,7 +9,7 @@ use \App\Models\Incomes;
 
 class Balance extends Authenticated {
 
-protected $showed;
+protected $display;
 
     protected function before() {
         parent::before();
@@ -18,7 +18,6 @@ protected $showed;
 
     protected function showExpenses() {
         $this->expenses = Expenses::getUserExpenses(Auth::getUser());
-        $_SESSION['chartData'] = $this->expenses;
         return $this->expenses;
 
     }
@@ -31,15 +30,16 @@ protected $showed;
         echo $expense_sum;
 
         View::renderTemplate('Balance/index.html',[
-            'showed' => $this->showed,
+            'display' => $this->display,
+            'expenses' => $this->expenses,
         ]);
 
-        $this->showed = false;
+        $this->display = false;
     }
 
 
     public function form() {
-        $this->showed = true;
+        $this->display = true;
         $this->index();
     }
 

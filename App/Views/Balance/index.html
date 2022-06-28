@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Bilans{% endblock %}
+{% block title %}Balance{% endblock %}
 
 {% block footer %}
 
@@ -7,10 +7,52 @@
 
 {% block body %}
 
+<div class="main-balance">
+    <div class="titles">
+        <img src="pictures/expense.png" alt="" class="img-balance">
+        <h2 class="balance-item-header"> Expense</h2>
+        <hr>
+    </div>
+    <table>
+        <thead>
+        <tr>
+            <th class="table-head">No.</th>
+            <th class="table-head">Date</th>
+            <th class="table-head">Category</th>
+            <th class="table-head">Method</th>
+            <th class="table-head">Amount</th>
+            <th class="table-head">Description</th>
+        </tr>
+        </thead>
+        <tbody>
 
-<div>
-       Balance
-            </div>
+
+            {% for expense in expenses %}
+            <tr>
+
+            <td class="table-content">{{expense.id}}</td>
+            <td class="table-content">{{expense.date_of_expense}}</td>
+            <td class="table-content">{{expense.category}}</td>
+            <td class="table-content">{{expense.method}}</td>
+            <td class="table-content">{{expense.amount}}</td>
+            <td class="table-content">{{expense.expense_comment}}</td>
+            </tr>
+
+        {% endfor %}
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</div>
+
+
+
+
 
 
 
