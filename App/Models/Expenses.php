@@ -51,6 +51,28 @@ return $stmt->fetchAll();
     }
 
 
+    public static function getExpensesAjax($user){
+
+        $sql = 'SELECT expenses_category_assigned_to_users.name, SUM(expenses.amount) AS "amountSum" 
+FROM expenses, expenses_category_assigned_to_users 
+WHERE expenses.user_id = :prep_user_id 
+AND expenses_category_assigned_to_users.user_id = expenses.user_id 
+  AND expenses_category_assigned_to_users.id = expenses.expense_category_assigned_to_user_id 
+  GROUP BY expenses_category_assigned_to_users.name ORDER BY amountSum DESC';
+
+        $db = static::getDB();
+        $stmt = $db->prepare($sql);
+
+        $stmt->bindValue(':prep_user_id', $user->id, PDO::PARAM_INT);
+
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
+
+
+
+
 
 
 

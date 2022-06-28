@@ -3,16 +3,26 @@
 
 {% block footer %}
 
+<script src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="/js/chart.js"></script>
+
 {% endblock %}
+
+
+
+
+
 
 {% block body %}
 
 <div class="main-balance">
     <div class="titles">
-        <img src="pictures/expense.png" alt="" class="img-balance">
+        <img src="img/expense.png" alt="" class="img-balance">
         <h2 class="balance-item-header"> Expense</h2>
+        <p> Total expense: {{ expense_sum }}</p>
         <hr>
     </div>
+    <div class="piechart" id="piechart"></div>
     <table>
         <thead>
         <tr>
@@ -25,7 +35,6 @@
         </tr>
         </thead>
         <tbody>
-
 
             {% for expense in expenses %}
             <tr>
@@ -41,7 +50,7 @@
         {% endfor %}
 
 
-
+{% set twigVariable = '123456' %}
 
 
 
@@ -49,12 +58,6 @@
         </tbody>
     </table>
 </div>
-
-
-
-
-
-
 
 
 
