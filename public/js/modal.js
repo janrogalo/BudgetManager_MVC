@@ -4,8 +4,6 @@ const span = document.getElementsByClassName("close")[0];
 const returnBtn = document.querySelector(".return");
 const keepAdding = document.querySelector(".addExpense");
 
-
-
 btn.onclick = function() {
     modal.classList.toggle('displayNone')
 

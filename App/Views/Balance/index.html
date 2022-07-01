@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+{% block title %}Balance{% endblock %}
+
+{% block footer %}
+
+
+
+
+
+
+
+<script src="/js/date.js"></script>
+<script src="https://www.gstatic.com/charts/loader.js"></script>
+<script>
+ let expensesJson = `{{chart_data | raw}}`;
+ let expenses = JSON.parse(expensesJson);
+
+ google.charts.load('current', {'packages':['corechart']});
+ google.charts.setOnLoadCallback(drawChart);
+
+ function drawChart() {
+     let data = new google.visualization.DataTable();
+     data.addColumn('string', 'Category');
+     data.addColumn('number', 'Amount');
+
+     for (let i=0; i<expenses.length; i++){
+         data.addRows([
+             [expenses[i].name, Number(expenses[i].amountSum)]
+         ]);
+     };
+
+     const options = {
+         backgroundColor: '#88bdbc',
+     };
+
+     const chart = new google.visualization.PieChart(document.getElementById('piechart'));
+     chart.draw(data, options);
+ }
+</script>
+
+
+
+
+
+
+{% endblock %}
+
+
+
+{% block body %}
+
+<div class="main-balance">
+        <form  action="/balance/index" method="post" name="form" id="balance" onChange="setDates();">
+
+            <div>
+                <label class="textright" >Display period</label></div>
+
+            <p>{{date_start}}</p>
+            <p>{{date_end}}</p>
+
+            <select name="range" id="range">
+
+                <option value="1"
+                        {% if range==1 %}
+                        selected
+                        {% endif %}>Current month</option>
+
+                <option value="2"
+                        {% if range==2 %}
+                        selected
+                        {% endif %}>Previous month</option>
+
+                <option value="3"
+                        {% if range==3 %}
+                        selected
+                        {% endif %}>Choose dates</option>
+            </select>
+
+            <div class="dateSelector" >
+                <label  for="date_start">Start date</label>
+            <input class="textInput" name="date_start" id="date_start" type="date" required onChange="sendForm();"
+
+                   {% if date_start %}
+                   value = {{ date_start }}
+                   {% endif %} >
+        </div>
+            <div class="dateSelector">
+                <label class for="date_end">End date</label>
+            <input class="textInput" name="date_end" id="date_end" type="date" required onChange="sendForm();"
+                   {% if date_end %}
+                   value = {{ date_end }}
+                   {% endif %} >
+            </div>
+        </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="main-balance">
+    <div class="titles">
+        <img src="img/expense.png" alt="" class="img-balance">
+        <h2 class="balance-item-header"> Expense</h2>
+        <p> Total expense: {{ expense_sum }}</p>
+        <hr>
+    </div>
+    <div class="piechart" id="piechart"></div>
+    <table>
+        <thead>
+        <tr>
+            <th class="table-head">No.</th>
+            <th class="table-head">Date</th>
+            <th class="table-head">Category</th>
+            <th class="table-head">Method</th>
+            <th class="table-head">Amount</th>
+            <th class="table-head">Description</th>
+        </tr>
+        </thead>
+        <tbody>
+
+            {% for expense in expenses %}
+            <tr>
+
+            <td class="table-content">{{expense.id}}</td>
+            <td class="table-content">{{expense.date_of_expense}}</td>
+            <td class="table-content">{{expense.category}}</td>
+            <td class="table-content">{{expense.method}}</td>
+            <td class="table-content">{{expense.amount}}</td>
+            <td class="table-content">{{expense.expense_comment}}</td>
+            </tr>
+
+        {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+
+
+
+{% endblock %}

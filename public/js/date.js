@@ -1,12 +1,44 @@
-function setStartDate() {
-   const currentDate =  new Date();
-    let y = currentDate.getFullYear();
-    let m = currentDate.getMonth() + 1;
-    if(m<10) m = '0'+m;
-    d = currentDate.getDate();
-    if(d<10) d = '0'+d;
+let start = document.getElementById("date_start").value;
+let finish = document.getElementById("date_end").value;
 
-    return y + "-" + m + "-" + d
+const now = new Date();
+
+
+
+function setDates(){
+    let number = document.getElementById("range").value;
+
+
+
+
+ if (number == 1 ) {
+
+     document.getElementById("date_start").value= new Date(now.getFullYear(), now.getMonth(), 1).toISOString().slice(0, 10);
+     document.getElementById("date_end").value= new Date(now.getFullYear(), now.getMonth()+ 1, 1).toISOString().slice(0, 10);
+     document.form.submit();
+ }
+else if(number == 2){
+
+     document.getElementById("date_start").value = new Date(now.getFullYear(), now.getMonth()-1, 1).toISOString().slice(0, 10);
+     document.getElementById("date_end").value = new Date(now.getFullYear(), now.getMonth() , 1).toISOString().slice(0, 10);
+     document.form.submit();
+
+
+
+
+ }
+ else if(number == 3){
+
+   start = document.getElementById("date_start").value;
+   finish = document.getElementById("date_end").value;
+     console.log('3');
+
+ }
+
+
 }
 
-document.querySelector('#date').value = setStartDate();
+
+function sendForm(){
+ document.form.submit();
+}
