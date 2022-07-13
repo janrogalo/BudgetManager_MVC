@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% block title %}Add income{% endblock %}
+
+{% block footer %}
+
+{% if added_income %}
+
+{% endif %}
+<script src="/js/date.js"></script>
+<script src="/js/modal.js"></script>
+
+
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+  <h1>Add Income</h1>
+  <div class="defaultForm">
+
+
+    <form method="post" action="/income/add" id="incomeForm">
+
+      <div class="block">
+        <label for="amount">Amount</label>
+        <input class="textInput" name="amount" id="amount" type="number" step="0.01" required"/>
+      </div>
+
+      <div class="block">
+        <label for="date">Date</label>
+        <input class="textInput" name="date" id="date" type="date" required"/>
+      </div>
+
+      <div class="block">
+        <label for="paymentMethod">Category</label>
+
+        <select name="incomeCategory" class="textInput" id="incomeCategory">
+          {% for category in incomeCategories %}
+          <option value={{category.id}}>{{category.name}}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="comment">Comment:</label>
+        <textarea class="form-control" class="textInput" id="comment" name="comment" cols="39" rows="1" placeholder="Optional"></textarea>
+      </div>
+
+      <div class="link marginTop">
+        <button type="submit" id="modalTrig">Add expense</button>
+        <button><a href="/profile/show">Cancel</a></button>
+
+      </div>
+    </form>
+
+
+    <!--Modal -->
+
+
+    <div id="myModal" tabindex="-1" role="dialog" class="displayNone" >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">New Expense</h5>
+            <button type="button" class="close" data-dismiss="modal" >
+              <span >&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            New income added successfully!
+          </div>
+          <div class="modal-footer">
+            <button class="return"> <a href="/">Return to main</a></button>
+            <button class="addExpense"> <a href="/expense/new">Continue adding income</a></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--         Modal -->
+
+
+  </div>
+</div>
+
+
+{% endblock %}

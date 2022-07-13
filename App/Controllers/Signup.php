@@ -37,6 +37,7 @@ class Signup extends \Core\Controller
        User::activate($this->route_params['token']);
         User::copyDefaultExpenses($user);
         User::copyDefaultPaymentMethod($user);
+        User::copyDefaultIncomes($user);
        $this->redirect('/signup/activated');
     }
 

@@ -3,12 +3,6 @@
 
 {% block footer %}
 
-
-
-
-
-
-
 <script src="/js/date.js"></script>
 <script src="https://www.gstatic.com/charts/loader.js"></script>
 <script>
@@ -38,17 +32,39 @@
  }
 </script>
 
+<script>
+    let incomesJson = `{{ incomes_chart_data | raw}}`;
+    let incomes = JSON.parse(incomesJson);
 
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
 
+    function drawChart() {
+        let data = new google.visualization.DataTable();
+        data.addColumn('string', 'Category');
+        data.addColumn('number', 'Amount');
 
+        for (let i=0; i<incomes.length; i++){
+            data.addRows([
+                [incomes[i].name, Number(incomes[i].amountSum)]
+            ]);
+        };
 
+        const options = {
+            backgroundColor: '#88bdbc',
+        };
+
+        const chart = new google.visualization.PieChart(document.getElementById('piechart_income'));
+        chart.draw(data, options);
+    }
+</script>
 
 {% endblock %}
 
 
 
 {% block body %}
-
+<div class="wrapper">
 <div class="main-balance">
         <form  action="/balance/index" method="post" name="form" id="balance" onChange="setDates();">
 
@@ -92,18 +108,23 @@
                    {% endif %} >
             </div>
         </form>
+<div class="balance_score">
+    <p> Income: {{ incomes_sum }}</p>
+    <p> Expense: {{ expense_sum }}</p>
+    <hr />
+    <p> Total: {{ balance }}</p>
+
+    {% if balance < 0 %}
+    <p> Start saving up! You spend more than you make!</p>
+    {% elseif balance > 0 %}
+    <p> You are doing great! Keep up!</p>
+    {% else %}
+    <p> Keep track of your finances</p>
+    {% endif %}
+
 </div>
 
-
-
-
-
-
-
-
-
-
-
+</div>
 
 
 
@@ -145,6 +166,54 @@
         </tbody>
     </table>
 </div>
+
+<div class="main-balance">
+    <div class="titles">
+        <img src="img/income.png" alt="" class="img-balance">
+        <h2 class="balance-item-header">Income</h2>
+        <p> Total income: {{ incomes_sum }}</p>
+        <hr>
+    </div>
+    <div class="piechart" id="piechart_income"></div>
+    <table>
+        <thead>
+        <tr>
+            <th class="table-head">No.</th>
+            <th class="table-head">Date</th>
+            <th class="table-head">Category</th>
+            <th class="table-head">Amount</th>
+            <th class="table-head">Description</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for income in incomes %}
+        <tr>
+
+            <td class="table-content">{{income.id}}</td>
+            <td class="table-content">{{income.date_of_expense}}</td>
+            <td class="table-content">{{income.category}}</td>
+            <td class="table-content">{{income.amount}}</td>
+            <td class="table-content">{{income.income_comment}}</td>
+        </tr>
+
+        {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
 
 
 

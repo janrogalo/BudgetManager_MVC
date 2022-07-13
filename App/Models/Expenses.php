@@ -72,8 +72,6 @@ GROUP BY expenses_category_assigned_to_users.name ORDER BY amountSum DESC';
         $stmt->bindValue(':endDate', $date_end, PDO::PARAM_STR);
 
         $stmt->execute();
-//        var_dump($stmt->fetchAll());
-//        echo $date_start.'----->'.$date_end;
         return $stmt->fetchAll();
     }
 

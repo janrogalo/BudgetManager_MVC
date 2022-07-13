@@ -280,6 +280,13 @@ select-items;{
     margin-bottom: 1em;
 }
 
+.wrapper{
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
 
 
 
@@ -423,7 +430,9 @@ hr {
     color: #112d32;
 }
 
-
+#balance{
+    margin-bottom: 30px;
+}
 
 
 
@@ -458,6 +467,13 @@ hr {
     outline: none;
     box-shadow: 0 0.5em 0.5em -0.4em #112d32;
 }
+
+.balance_score {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 
 .nav {
     top: 3rem;
@@ -527,6 +543,7 @@ hr {
 .main-balance {
     height: 700px;
     min-width: 400px;
+    max-width: 800px;
     overflow-x: scroll;
     overflow-y: scroll;
     text-decoration: none;

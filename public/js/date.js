@@ -24,8 +24,6 @@ else if(number == 2){
      document.form.submit();
 
 
-
-
  }
  else if(number == 3){
 
@@ -34,8 +32,6 @@ else if(number == 2){
      console.log('3');
 
  }
-
-
 }
 
 

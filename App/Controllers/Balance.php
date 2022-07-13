@@ -23,11 +23,21 @@ protected $range;
      return $this->expenses;
     }
 
+
+    protected function showIncomes() {
+        $this->incomes = Incomes::getUserIncomes(Auth::getUser(),$this->date_start, $this->date_end);
+        return $this->incomes;
+    }
+
     protected function encodeChartDataAction() {
         $this->chartData = Expenses::getExpensesByCategory(Auth::getUser(), $this->date_start, $this->date_end);
         return $this->chartData;
     }
 
+    protected function encodeIncomesChartDataAction() {
+        $this->incomesChartData = Incomes::getIncomesByCategory(Auth::getUser(), $this->date_start, $this->date_end);
+        return $this->incomesChartData;
+    }
 
 
     public function indexAction() {
@@ -37,18 +47,31 @@ protected $range;
 
         $this->checkDates();
         $this->showExpenses();
+        $this->showIncomes();
         $this->encodeChartDataAction();
+        $this->encodeIncomesChartDataAction();
         $this->range = filter_input(INPUT_POST, 'range');
 
 
         $expense_sum = array_sum(array_column($this->showExpenses(), 'amount'));
         $expense_sum_format = number_format($expense_sum ,2, '.' );
 
+
+        $incomes_sum = array_sum(array_column($this->showIncomes(), 'amount'));
+        $incomes_sum_format = number_format($incomes_sum ,2, '.' );
+
+        $balance = $incomes_sum - $expense_sum;
+        $balance_format = number_format($balance ,2, '.' );
+
         View::renderTemplate('Balance/index.html',[
             'display' => $this->display,
             'expenses' => $this->expenses,
+            'incomes' => $this->incomes,
             'expense_sum' => $expense_sum_format,
+            'incomes_sum' => $incomes_sum_format,
+            'balance' => $balance_format,
             'chart_data' =>json_encode($this->chartData),
+            'incomes_chart_data' =>json_encode($this->incomesChartData),
             'range' => $this->range,
             'date_start' => $this->date_start,
             'date_end' => $this->date_end,

@@ -337,6 +337,34 @@ public static function authenticate($email, $password){
     }
 
 
+    public static function getIncomeCategory($user) {
+
+        $sql = 'SELECT * FROM incomes_category_assigned_to_users WHERE user_id = :user_id';
+        $db = static::getDB();
+        $stmt = $db->prepare($sql);
+
+        $stmt->bindValue(':user_id', $user->id, PDO::PARAM_INT);
+
+        $stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class());
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
+    public static function copyDefaultIncomes($user) {
+
+        $sql = 'INSERT INTO incomes_category_assigned_to_users(user_id, name) SELECT :prep_user_id, name FROM incomes_category_default ';
+        $db = static::getDB();
+        $stmt = $db->prepare($sql);
+
+        $stmt->bindValue(':prep_user_id', $user->id, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $stmt_alter = $db->prepare('alter table incomes_category_assigned_to_users AUTO_INCREMENT=4');
+        $stmt_alter->execute();
+    }
+
+
+
 
 
 }
