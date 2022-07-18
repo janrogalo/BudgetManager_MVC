@@ -59,22 +59,41 @@
     }
 </script>
 
+<script>
+    let range = '{{ range }}'
+    if(range){
+         document.getElementById("expense_row").style.display="flex";
+        document.getElementById("income_row").style.display="flex";
+    }
+
+</script>
+
+
 {% endblock %}
 
 
 
 {% block body %}
+
 <div class="wrapper">
-<div class="main-balance">
+<div class= "row">
+
+    <div>
+        <label class="textright" >Display period</label>
+    <p>{{date_start}}</p>
+    <p>{{date_end}}</p>
+    </div>
+
+
+
         <form  action="/balance/index" method="post" name="form" id="balance" onChange="setDates();">
+            <select name="range" id="range" >
 
-            <div>
-                <label class="textright" >Display period</label></div>
+                <option value="1"
+                        {% if range==0 %}
+                        selected
+                        {% endif %}>Choose dates</option>
 
-            <p>{{date_start}}</p>
-            <p>{{date_end}}</p>
-
-            <select name="range" id="range">
 
                 <option value="1"
                         {% if range==1 %}
@@ -89,7 +108,7 @@
                 <option value="3"
                         {% if range==3 %}
                         selected
-                        {% endif %}>Choose dates</option>
+                        {% endif %}>Input dates</option>
             </select>
 
             <div class="dateSelector" >
@@ -112,24 +131,27 @@
     <p> Income: {{ incomes_sum }}</p>
     <p> Expense: {{ expense_sum }}</p>
     <hr />
-    <p> Total: {{ balance }}</p>
+    <p class="textright"> Total: {{ balance }}</p>
 
     {% if balance < 0 %}
     <p> Start saving up! You spend more than you make!</p>
     {% elseif balance > 0 %}
     <p> You are doing great! Keep up!</p>
     {% else %}
-    <p> Keep track of your finances</p>
+    <p> Keep track of your finances you are on edge!</p>
     {% endif %}
 
 </div>
-
+</div>
 </div>
 
 
 
 
-<div class="main-balance">
+
+
+<div class="wrapper">
+<div class="row" id="expense_row">
     <div class="titles">
         <img src="img/expense.png" alt="" class="img-balance">
         <h2 class="balance-item-header"> Expense</h2>
@@ -143,9 +165,9 @@
             <th class="table-head">No.</th>
             <th class="table-head">Date</th>
             <th class="table-head">Category</th>
-            <th class="table-head">Method</th>
+            <th class="table-head desc">Method</th>
             <th class="table-head">Amount</th>
-            <th class="table-head">Description</th>
+            <th class="table-head desc">Description</th>
         </tr>
         </thead>
         <tbody>
@@ -156,9 +178,9 @@
             <td class="table-content">{{expense.id}}</td>
             <td class="table-content">{{expense.date_of_expense}}</td>
             <td class="table-content">{{expense.category}}</td>
-            <td class="table-content">{{expense.method}}</td>
+            <td class="table-content desc">{{expense.method}}</td>
             <td class="table-content">{{expense.amount}}</td>
-            <td class="table-content">{{expense.expense_comment}}</td>
+            <td class="table-content desc">{{expense.expense_comment}}</td>
             </tr>
 
         {% endfor %}
@@ -167,7 +189,8 @@
     </table>
 </div>
 
-<div class="main-balance">
+
+<div class="row" id="income_row">
     <div class="titles">
         <img src="img/income.png" alt="" class="img-balance">
         <h2 class="balance-item-header">Income</h2>
@@ -175,6 +198,7 @@
         <hr>
     </div>
     <div class="piechart" id="piechart_income"></div>
+
     <table>
         <thead>
         <tr>
@@ -182,7 +206,7 @@
             <th class="table-head">Date</th>
             <th class="table-head">Category</th>
             <th class="table-head">Amount</th>
-            <th class="table-head">Description</th>
+            <th class="table-head desc">Description</th>
         </tr>
         </thead>
         <tbody>
@@ -191,10 +215,10 @@
         <tr>
 
             <td class="table-content">{{income.id}}</td>
-            <td class="table-content">{{income.date_of_expense}}</td>
+            <td class="table-content">{{income.date_of_income}}</td>
             <td class="table-content">{{income.category}}</td>
             <td class="table-content">{{income.amount}}</td>
-            <td class="table-content">{{income.income_comment}}</td>
+            <td class="table-content desc">{{income.income_comment}}</td>
         </tr>
 
         {% endfor %}

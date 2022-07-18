@@ -364,7 +364,48 @@ public static function authenticate($email, $password){
     }
 
 
+    public static function updatePassword($data, $user) {
+
+        $password = $data['password'];
+        $password_hash = password_hash($password, PASSWORD_DEFAULT);
+
+        $user = new User();
+        $user->validate();
+
+        if (empty($user->errors)) {
+            $sql = 'UPDATE users SET password_hash=:password_hash WHERE id=:id';
+
+            $db = static::getDB();
+            $stmt = $db->prepare($sql);
+
+            $stmt->bindValue(':id', $user->id, PDO::PARAM_STR);
+            $stmt->bindValue(':password_hash', $password_hash, PDO::PARAM_STR);
+
+            return $stmt->execute();
+        }
+        return false;
+    }
+
+    
+
+
+        public static function updateName($data, $user) {
+            $user = new User();
+            $usernameAfterChange = $user->$data['usernameAfterChange'];
+
+            $sql = 'UPDATE users SET name=:usernameAfterChange WHERE id=:id';
+            $db = static::getDB();
+            $stmt = $db->prepare($sql);
+
+            $stmt->bindValue(':usernameAfterChange', $usernameAfterChange, PDO::PARAM_STR);
+            $stmt->bindValue(':id', $user->id, PDO::PARAM_STR);
+
+            return $stmt->execute();
+        }
 
 
 
-}
+
+
+
+    }

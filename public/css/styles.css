@@ -7,13 +7,11 @@ h1 {
     padding-bottom: 20px;
 }
 
-
 .background{
     background: rgb(247,244,239);
-    width:100%;
+    width:100vw;
     padding: 3rem;
 }
-
 
 
 /*Index Page styles*/
@@ -97,11 +95,6 @@ h1 {
     padding: 2.8em;
     text-align: center;
 }
-
-
-
-
-
 
 
 
@@ -272,7 +265,6 @@ select-items;{
 
 
 
-
 /*Balance Page*/
 .img-balance {
     width: 100px;
@@ -281,79 +273,101 @@ select-items;{
 }
 
 .wrapper{
-    width: 90%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+
+.row{
+    width: 100%;
+    justify-content: space-evenly;
+    position: relative;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
     align-items: center;
+    padding: 2em 2em;
+    margin: 2rem 4rem 1rem 4rem;
+    color: #112d32;
+    background-color: #88bdbc;
+    border-radius: 0.2em;
+        font-family: 'Lato', sans-serif;
+        font-size: 1.2em;
+        text-transform: uppercase;
+}
+
+.textright{
+    margin-bottom: 2rem;
+    font-family: 'Lato', sans-serif;
+    font-size: 1.2em;
+    text-transform: uppercase;
+}
+
+
+.balance-h2 {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.0em;
+    color: #112d32;
+    margin-top: 1rem;
+}
+
+.balance-p {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.8em;
+    color: #112d32;
+}
+
+.balance_score {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 2rem;
+    padding: 1rem;
+}
+
+
+#income_row{
+    display: none;
+}
+
+#expense_row{
+    display: none;
 }
 
 
 
 
 
+/*Balance Page Table*/
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*OLD*/
-
-
-
-body, html {
-    height: 100%;
-    width: 100%;
-    margin: 0;
+table {
+    width: 50%;
+    overflow: scroll;
 }
 
+.table-head {
+    font-size: 0.7em;
+    padding: 1em;
+    margin: 0.2 0.6em;
+    background-color: #fff;
+    border-bottom: 1px solid #fff;
+}
+
+.table-content {
+    font-size: 0.6em;
+    padding: 1em;
+    margin: 0.6 0.6em;
+    border-bottom: 1px solid #fff;
+}
+
+
+
+@media (max-width: 600px) {
+    .desc {
+        display: none !important;
+    }
+}
 
 .content{
     height: 95%;
@@ -363,34 +377,6 @@ body, html {
     justify-content: center;
     align-items: center;
 }
-
-.
-
-
-
-hr {
-    width: 100%;
-    color: #f7f4ef;
-    border-top: solid;
-    margin-top: 1em;
-}
-
-
-
-
-.login-menu {
-    max-width: 400px;
-    background-color: #88bdbc;
-    position: relative;
-    top: 20vh;
-    border-radius: 0.5em;
-    margin-top: 1em;
-    margin-bottom: 1em;
-    margin-left: 2em;
-    padding: 1em;
-    min-width: 15em;
-}
-
 
 
 .welcome-menu {
@@ -416,26 +402,6 @@ hr {
     top: 20vh;
     margin-bottom: 3em;
 }
-
-.balance-h2 {
-    font-family: 'Lato', sans-serif;
-    font-size: 1.0em;
-    color: #112d32;
-    margin-top: 1rem;
-}
-
-.balance-p {
-    font-family: 'Lato', sans-serif;
-    font-size: 0.8em;
-    color: #112d32;
-}
-
-#balance{
-    margin-bottom: 30px;
-}
-
-
-
 
 
 .date-input {
@@ -474,11 +440,9 @@ hr {
     justify-content: center;
 }
 
-
 .nav {
     top: 3rem;
 }
-
 
 .nav-item {
 
@@ -498,117 +462,6 @@ hr {
 
 .nav-logo {
     max-width: 150px;
-}
-
-.main {
-    width: 90%;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    background-color: #f7f4ef;
-    justify-content: center;
-    align-items: top;
-    border-radius: 0.5em;
-    margin-top: 1em;
-    padding: 1em;
-}
-
-
-
-
-.main-description {
-    font-family: 'Lato', sans-serif;
-    font-size: 1em;
-    display: flex;
-    width: 195px;
-    justify-content: center;
-    border-top: 1px solid #88bdbc;
-    padding: 1em;
-    margin: 1.2em;
-}
-
-.financial-operation {
-    width: 25em;
-    display: flex;
-    flex-direction: column;
-    background-color: #88bdbc;
-    position: relative;
-    border-radius: 0.5em;
-    margin-top: 1em;
-    margin-bottom: 1em;
-    padding: 1em;
-    min-width: 15em;
-}
-
-.main-balance {
-    height: 700px;
-    min-width: 400px;
-    max-width: 800px;
-    overflow-x: scroll;
-    overflow-y: scroll;
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    /*justify-content: center;*/
-    align-items: center;
-    font-family: 'Lato', sans-serif;
-    font-size: 1.2em;
-    text-transform: uppercase;
-    color: #112d32;
-    background-color: #88bdbc;
-    padding: 2em 2em;
-    margin: 2rem;
-    border-radius: 0.2em;
-}
-
-
-
-.titles{
-    background-color: #88bdbc;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-items: center;
-
-
-}
-
-.balance-result {
-    color: #112d32;
-    text-decoration: none;
-    padding: 0.6em 0.6em;
-    margin: 0.5em 1em;
-    font-size: 1.5em;
-    border-radius: 0.4em;
-    font-family: 'Lato', sans-serif;
-}
-
-.balance-result:hover {
-    color: #112d32;
-    border: 1px solid #fff;
-    background-color: #fff;
-
-    font-family: 'Lato', sans-serif;
-}
-
-.table {
-    width: 100%;
-    overflow: scroll;
-}
-
-.table-head {
-    font-size: 0.7em;
-    padding: 1em;
-    margin: 0.2 0.6em;
-    background-color: #fff;
-    border-bottom: 1px solid #fff;
-}
-
-.table-content {
-    font-size: 0.6em;
-    padding: 1em;
-    margin: 0.6 0.6em;
-    border-bottom: 1px solid #fff;
 }
 
 
@@ -631,25 +484,12 @@ hr {
     display: inline-block;
 }
 
-.balance-item-header {
-    font-family: 'Lato', sans-serif;
-    font-size: 1.2em;
-    margin-top: 1rem;
-    text-transform: uppercase;
-    color: #f7f4ef;
-
-}
 
 .piechart {
     margin-top: 2em;
     display: inline;
     position: relative;
     width: 90%;
-
-    /*border-radius: 50%;*/
-    /*background-image: conic-gradient(#fff 70deg,*/
-    /*        #112d32 0 235deg,*/
-    /*        rgb(95, 82, 58) 0);*/
     justify-content: center;
     align-items: center;
 }
@@ -667,25 +507,12 @@ hr {
     }
 
 
-    .main-balance{
-        width: 800px;
-        height: auto;
-        position: relative;
-        top: 20px;
-        overflow: unset;
-    }
-
-
     @media (max-width: 800px) {
 
         .content{
             flex-direction: column;
         }
 
-        .main-balance{
-            width: 300px;
-            height: 600px;
-        }
 
         .titles{
             background-color: none;

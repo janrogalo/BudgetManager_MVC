@@ -3,12 +3,13 @@
 
 {% block footer %}
 
-{% if added_income %}
-
+{% if incomeAdded %}
+<script type="text/javascript">
+  window.onload = showModal;
+  function showModal(){
+    $("#myModal").modal();}
+</script>
 {% endif %}
-<script src="/js/date.js"></script>
-<script src="/js/modal.js"></script>
-
 
 {% endblock %}
 
@@ -47,38 +48,33 @@
       </div>
 
       <div class="link marginTop">
-        <button type="submit" id="modalTrig">Add expense</button>
+        <button type="submit" id="modalTrig" data-toggle="modal" data-target="#myModal">Add expense</button>
         <button><a href="/profile/show">Cancel</a></button>
 
       </div>
     </form>
 
-
     <!--Modal -->
-
-
-    <div id="myModal" tabindex="-1" role="dialog" class="displayNone" >
-      <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">New Expense</h5>
-            <button type="button" class="close" data-dismiss="modal" >
-              <span >&times;</span>
+            <h5 class="modal-title" id="exampleModalLabel">New Income</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
             New income added successfully!
           </div>
           <div class="modal-footer">
-            <button class="return"> <a href="/">Return to main</a></button>
-            <button class="addExpense"> <a href="/expense/new">Continue adding income</a></button>
+            <button type="button" data-dismiss="modal"><a href="/">Return to main</a></button>
+            <button type="button" ><a href="/expense/new">Continue adding incomes</a></button>
           </div>
         </div>
       </div>
     </div>
-
-    <!--         Modal -->
-
+    <!--Modal -->
 
   </div>
 </div>

@@ -21,7 +21,7 @@ class Income extends Authenticated {
 
         View::renderTemplate('Income/new.html', [
             'incomeCategories' => $incomeCategories,
-            'added_income' => $this->added_income
+            'incomeAdded' => $this->added_income
         ]);
     }
 
