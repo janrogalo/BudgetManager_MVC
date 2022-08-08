@@ -1,4 +1,9 @@
 {
+  "name": "janrogalo/BudgetManager_MVC",
+  "description": "Simple Budget Manager",
+  "keywords": ["budget", "manager", "phpapp"],
+  "homepage": "hhttps://github.com/janrogalo/BudgetManager_MVC",
+  "license" : "MIT",
     "require": {
       "twig/twig": "~1.0",
       "phpmailer/phpmailer": "^6.5"
