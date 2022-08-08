@@ -2,7 +2,7 @@
   "name": "janrogalo/budgetmanager_mvc",
   "description": "simple budget manager",
   "keywords": ["budget", "manager", "phpapp"],
-  "homepage": "https://github.com/janrogalo/budgetmanager_mvc",
+  "homepage": "https://github.com/janrogalo/budgetManager_mvc",
   "license" : "mit",
     "require": {
       "twig/twig": "~1.0",
